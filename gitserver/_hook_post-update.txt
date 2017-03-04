@@ -21,6 +21,7 @@ echo "deploying the test web"
 #git pull origin master  
 git fetch --all  
 git reset --hard origin/master  
+git pull
    
 time=`date`  
 echo "web server pull at webserver at time: $time."  

@@ -22,8 +22,7 @@ chmod 700 $2
 
 # 创建发布hook 设置执行权限
 cp $DIR/_hook_post-update.txt $1/hooks/post-update.sh
-sed -i -n "s;DeployPath=*;DeployPath='$2';p" $1/hooks/post-update.sh
-sed "s;DeployPath*;DeployPath='$2';" $1/hooks/post-update.sh
+sed -i "s;DeployPath=\"/var/web\";DeployPath='$2';" $1/hooks/post-update.sh 
 chmod +x $1/hooks/post-update.sh
 sudo chown -R git:git $1
 

@@ -16,7 +16,8 @@ DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 sudo git init --bare $1
 
 # 建立发布目录
-mkdir $2
+rm -R $2
+git clone $1 $2
 chown git:git $2
 chmod 700 $2
 

@@ -15,14 +15,13 @@ DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 # 建仓库
 sudo git init --bare $1
 
+# 创建发布hook 设置执行权限
+cp $DIR/_hook_post-update.txt $1/hook/post-update.sh
+sed "s;DeployPath*;DeployPath='$2';" $1/hook/post-update.sh
+chmod +x $1/hook/post-update.sh
+sudo chown -R git:git $1
+
 # 建立发布目录
 mkdir $2
 chown git:git $2
 chmod 700 $2
-
-# 创建发布hook 设置执行权限
-cp $DIR/_hook_post-update.txt $2/hook/post-update.sh
-sed "s;DeployPath*;DeployPath='$2';" $2/hook/post-update.sh
-chmod +x $2/hook/post-update.sh
-
-sudo chown -R git:git $1

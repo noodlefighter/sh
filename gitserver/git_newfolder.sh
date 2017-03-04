@@ -16,9 +16,9 @@ DIR="$( cd "$( dirname "$0"  )" && pwd  )"
 sudo git init --bare $1
 
 # 创建发布hook 设置执行权限
-cp $DIR/_hook_post-update.txt $1/hook/post-update.sh
-sed "s;DeployPath*;DeployPath='$2';" $1/hook/post-update.sh
-chmod +x $1/hook/post-update.sh
+cp $DIR/_hook_post-update.txt $1/hooks/post-update.sh
+sed "s;DeployPath*;DeployPath='$2';" $1/hooks/post-update.sh
+chmod +x $1/hooks/post-update.sh
 sudo chown -R git:git $1
 
 # 建立发布目录
